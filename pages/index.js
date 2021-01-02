@@ -11,6 +11,8 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { Select, MenuItem, FormControl, InputLabel, makeStyles } from "@material-ui/core";
+import FormHelperText from '@material-ui/core/FormHelperText';
+
 
 const useStyles = makeStyles((theme) => ({
  
@@ -102,26 +104,52 @@ export default function SignUp() {
               <h3>Choose your section, institution, and cohort:</h3>
             </Grid>
           </Grid>
-         
-          <FormControl className={classes.formControl}>
-            <InputLabel>Section</InputLabel>
-    
-          <Select>
-            <MenuItem value={10}>Medicine</MenuItem>
-          </Select>
-          
-          </FormControl>
-          
           <Grid container justify="center">
           <FormControl className={classes.formControl}>
-            <InputLabel>Institution</InputLabel>
-    
-          <Select>
-            <MenuItem value={10}>UChicago</MenuItem>
-          </Select>
+        <InputLabel id="demo-simple-select-label">Section</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+ 
+        >
+          <MenuItem value={10}>Medicine</MenuItem>
           
-          </FormControl>
-          </Grid>
+        </Select>
+      </FormControl>
+ 
+      
+      
+      <FormControl className={classes.formControl}>
+        <InputLabel id="demo-simple-select-helper-label">Institution</InputLabel>
+        <Select
+          labelId="demo-simple-select-helper-label"
+          id="demo-simple-select-helper"
+        
+        >
+         
+          <MenuItem value={10}>UChicago</MenuItem>
+         
+        </Select>
+       
+      </FormControl>
+     
+     
+      <FormControl className={classes.formControl}>
+        <InputLabel id="demo-simple-select-helper-label">Cohort</InputLabel>
+        <Select
+          labelId="demo-simple-select-helper-label"
+          id="demo-simple-select-helper"
+        
+        >
+      
+          <MenuItem value={10}>2020-2021</MenuItem>
+         
+        </Select>
+       
+      </FormControl>
+
+</Grid>
+
           <Button
             type="submit"
             fullWidth
