@@ -73,7 +73,7 @@ function Row(props) {
                 <TableHead>
                   <TableRow>
                     <TableCell>Date</TableCell>
-                    <TableCell>Goal</TableCell>
+                    <TableCell>Goals</TableCell>
                    
                   </TableRow>
                 </TableHead>
