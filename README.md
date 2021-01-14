@@ -46,5 +46,11 @@ Expected front-end work required for this site includes:
 - [ ] Contact page (to report bugs or communication with site admins)
 ```
 
+## Testing
+Test cases are placed in the /tests folder.
+```
+yarn test
+```
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
