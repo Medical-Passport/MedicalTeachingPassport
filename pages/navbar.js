@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: 'LightGray',
       width: '100%',
       [theme.breakpoints.up('lg')]: {
-         width: '25%',
+         width: '250px',
          height: '100%',
       },
       [theme.breakpoints.down('sm')]: {
