@@ -70,8 +70,8 @@ function Navbar() {
               noWrap
               className={classes.toolbarTitle}
             >
-              PassportToClinicalTeaching
-            </Typography>
+              <a href="/">PassportToClinicalTeaching
+</a>            </Typography>
           </Grid>
 
           <Grid item xs container direction="row-reverse">
@@ -81,7 +81,7 @@ function Navbar() {
               variant="outlined"
               className={classes.link}
             >
-              Login
+              Account
             </Button>
             <Grid item>
               <Button
