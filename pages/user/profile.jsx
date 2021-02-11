@@ -90,56 +90,56 @@ export default function Profile() {
 
                 <Grid container direction="column">
                   <Grid item xs>
-                    <Button variant="contained" color="secondary">
+                    <Button href="/domains/biannualreview" variant="contained" color="secondary">
                       Opt-in and Biannual Review
                     </Button>
                   </Grid>
                   <br />
                   <Grid item xs>
-                    <Button variant="contained" color="secondary">
+                    <Button href="/domains/biannualreview" variant="contained" color="secondary">
                       Active Medical Education Committee Membership
                     </Button>
                   </Grid>
                   <br />
                   <Grid item xs>
-                    <Button variant="contained" color="secondary">
+                    <Button href="/domains/biannualreview" variant="contained" color="secondary">
                       Faculty Development in Medical Education
                     </Button>
                   </Grid>
                   <br />
                   <Grid item xs>
-                    <Button variant="contained" color="secondary">
+                    <Button href="/domains/biannualreview" variant="contained" color="secondary">
                       Instructions in Internal Medicine Undergrad, Grad, or
                       Interprofessional
                     </Button>
                   </Grid>
                   <br />
                   <Grid item xs>
-                    <Button variant="contained" color="secondary">
+                    <Button href="/domains/biannualreview" variant="contained" color="secondary">
                       Education Servier and Citizenship
                     </Button>
                   </Grid>
                   <br />
                   <Grid item xs>
-                    <Button variant="contained" color="secondary">
+                    <Button href="/domains/biannualreview" variant="contained" color="secondary">
                       Prepare and Present Teaching Topics
                     </Button>
                   </Grid>
                   <br />
                   <Grid item xs>
-                    <Button variant="contained" color="secondary">
+                    <Button href="/domains/biannualreview" variant="contained" color="secondary">
                       Introduction to MedEd Scholarship
                     </Button>
                   </Grid>
                   <br />
                   <Grid item xs>
-                    <Button variant="contained" color="secondary">
+                    <Button href="/domains/biannualreview" variant="contained" color="secondary">
                       Coaching Capstone Experience
                     </Button>
                   </Grid>
                   <br />
                   <Grid item xs>
-                    <Button variant="contained" color="primary">
+                    <Button href="/domains/biannualreview" variant="contained" color="primary">
                       Extras
                     </Button>
                   </Grid>
