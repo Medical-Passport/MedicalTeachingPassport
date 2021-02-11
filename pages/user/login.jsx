@@ -77,6 +77,8 @@ export default function Login() {
                   />
                 </Grid>
               </Grid>
+              <Grid container>
+
               <Button
                 type="submit"
                 fullWidth
@@ -86,6 +88,8 @@ export default function Login() {
               >
                 Log In
               </Button>
+              </Grid>
+              <br/>
               <Grid container>
                 <Grid item xs>
                   <Link href="#" variant="body2">
@@ -93,7 +97,7 @@ export default function Login() {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2">
+                  <Link href="/user/register" variant="body2">
                     {"Don't have an account? Sign up"}
                   </Link>
                 </Grid>

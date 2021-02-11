@@ -13,7 +13,13 @@ import Container from "@material-ui/core/Container";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Box from "@material-ui/core/Box";
-import { Select, MenuItem, FormControl, InputLabel,NativeSelect } from "@material-ui/core";
+import {
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  NativeSelect,
+} from "@material-ui/core";
 import FormHelperText from "@material-ui/core/FormHelperText";
 
 const useStyles = makeStyles((theme) => ({
@@ -102,10 +108,14 @@ export default function Login() {
                   autoComplete="current-password"
                 />
               </Grid>
-              <Grid container justify="center">
-                <h3>Choose your section, institution, and cohort:</h3>
-              </Grid>
             </Grid>
+            <br/>
+            <Grid container component="main" maxWidth="md">
+              <Typography  component="h1" variant="h6">
+                Choose your section, institution, and cohort:
+              </Typography>
+            </Grid>
+            <br/>
             <Grid container>
               <Grid item xs>
                 <FormControl className={classes.formControl}>
@@ -153,22 +163,24 @@ export default function Login() {
                 </FormControl>
               </Grid>
             </Grid>
+            <br/>
             <Grid container>
-                    <Grid item xs>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Sign up
-            </Button>
-                    </Grid>
+              <Grid item xs>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                >
+                  Sign up
+                </Button>
+              </Grid>
             </Grid>
+            <br/>
             <Grid container>
               <Grid container justify="flex-end">
-                <Link href="#" variant="body2">
+                <Link href="/user/login" variant="body2">
                   {"Already have an account? Log in"}
                 </Link>
               </Grid>
