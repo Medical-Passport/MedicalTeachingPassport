@@ -87,7 +87,7 @@ function Navbar() {
               <Button
                 variant="button"
                 color="textPrimary"
-                href="#"
+                href="/about/faq"
                 className={classes.link}
               >
                 About

@@ -31,7 +31,7 @@ export default function Home() {
             <h3>Register&rarr;</h3>
             <p>Register a new account to track your clinical teaching journey!</p>
           </a>
-          <a href="https://nextjs.org/learn" className={styles.card}>
+          <a href="/about/faq" className={styles.card}>
             <h3>Learn&rarr;</h3>
             <p>Check out our About page to answer some common questions!</p>
           </a>
