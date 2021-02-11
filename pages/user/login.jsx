@@ -80,6 +80,7 @@ export default function Login() {
               <Grid container>
 
               <Button
+                href="/user/profile"
                 type="submit"
                 fullWidth
                 variant="contained"
