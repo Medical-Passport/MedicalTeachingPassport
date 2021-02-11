@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withTheme } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -33,12 +33,6 @@ const useStyles = makeStyles((theme) => ({
   heroContent: {
     padding: theme.spacing(8, 0, 6),
   },
-  cardHeader: {
-    backgroundColor:
-      theme.palette.type === "light"
-        ? theme.palette.grey[200]
-        : theme.palette.grey[700],
-  },
   cardPricing: {
     display: "flex",
     justifyContent: "center",
@@ -63,7 +57,7 @@ function Navbar() {
   return (
     <AppBar
       position="static"
-      color="default"
+      color="white"
       elevation={0}
       className={classes.appBar}
     >
@@ -72,11 +66,11 @@ function Navbar() {
           <Grid item>
             <Typography
               variant="h4"
-              color="inherit"
+              color="#076585"
               noWrap
               className={classes.toolbarTitle}
             >
-              Passport To Clinical Teaching
+              PassportToClinicalTeaching
             </Typography>
           </Grid>
 
