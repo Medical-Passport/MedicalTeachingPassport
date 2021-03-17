@@ -1,174 +1,162 @@
-import React, { useState} from 'react';
-import Avatar from '@material-ui/core/Avatar';
+import React, { useState } from 'react';
+import { Fragment } from 'react';
+import {
+  List,
+  ListItem,
+  ListItemIcon,
+  Checkbox,
+  ListItemText,
+  ListItemSecondaryAction,
+  IconButton,
+  TextField,
+} from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
+import AddIcon from '@material-ui/icons/Add';
+import { makeStyles } from '@material-ui/core';
+import { createMuiTheme } from '@material-ui/core/styles';
+const theme = createMuiTheme({});
+import MenuIcon from '@material-ui/icons/Menu';
+import {
+  AppBar,
+  Toolbar,
+  Paper,
+  Grid,
+  CssBaseline,
+  Box,
+  Typography,
+} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import { Select, MenuItem, FormControl, InputLabel, makeStyles } from "@material-ui/core";
-import FormHelperText from '@material-ui/core/FormHelperText';
 
-
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
+  '@keyframes slideUp': {
+    from: { transform: 'translate(0, 50%)', opacity: 0 },
+    to: { transform: 'translate(0, 0)', opacity: 1 },
+  },
+  slideUpEffect: {
+    animationName: '$slideUp',
+    animationDuration: '.3s',
+  },
+  '@keyframes slideLeft': {
+    from: { transform: 'translate(0, 0)', opacity: 0.7 },
+    to: { transform: 'translate(-100%, 0)', opaicty: 0 },
+  },
+  slideLeftEffect: {
+    animationName: '$slideLeft',
+    animationDuration: '.4s',
+  },
  
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
 
-  formControl: {
+  
+});
 
-    minWidth: 100
-    
-  }
-}));
-
-export default function SignUp() {
+const TodoList = () => {
   const classes = useStyles();
-
+  let inRef = null;
+  const [idIndex, setIdIndex] = useState(3);
+  const [todoList, setTodoList] = useState([
+ 
+  ]);
+  const toggleItem = value => () => {
+    const copy = [...todoList];
+    copy.forEach(e => {
+      if (e.id == value) e.checked = !e.checked;
+    });
+    setTodoList(copy);
+  };
+  const deleteRequestItem = value => () => {
+    const copy = [...todoList];
+    let removeItem = undefined;
+    copy.forEach(e => {
+      if (e.id == value) {
+        e.anim = true;
+        removeItem = e;
+      }
+    });
+    setTodoList(copy);
+    setTimeout(value => {
+      deleteItem(removeItem);
+    }, 300);
+  };
+  const deleteItem = value => {
+    const copy = [...todoList];
+    let index = copy.indexOf(value);
+    if (index != -1) {
+      copy.splice(index, 1);
+      setTodoList(copy);
+    }
+  };
+  const addItem = value => {
+    const data = {
+      id: idIndex,
+      checked: false,
+      text: inRef.value,
+      anim: false,
+    };
+    setIdIndex(idIndex + 1);
+    const copy = [...todoList];
+    copy.push(data);
+    setTodoList(copy);
+    inRef.value = '';
+  };
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        
-        <Typography component="h1" variant="h5">
-        Passport to Clinical Teaching
-        </Typography>
-        <form className={classes.form} noValidate>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
-            </Grid>
-            <Grid container justify="center">
-              <h3>Choose your section, institution, and cohort:</h3>
-            </Grid>
-          </Grid>
-          <Grid container justify="center">
-          <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">Section</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
- 
-        >
-          <MenuItem value={10}>Medicine</MenuItem>
-          
-        </Select>
-      </FormControl>
- 
+    
+    <Fragment>
       
-      
-      <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-helper-label">Institution</InputLabel>
-        <Select
-          labelId="demo-simple-select-helper-label"
-          id="demo-simple-select-helper"
-        
-        >
-         
-          <MenuItem value={10}>UChicago</MenuItem>
-         
-        </Select>
-       
-      </FormControl>
-     
-     
-      <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-helper-label">Cohort</InputLabel>
-        <Select
-          labelId="demo-simple-select-helper-label"
-          id="demo-simple-select-helper"
-        
-        >
-      
-          <MenuItem value={10}>2020-2021</MenuItem>
-         
-        </Select>
-       
-      </FormControl>
-
-</Grid>
-
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign up
-          </Button>
-          <Grid container>
-           
-            <Grid container justify="flex-end">
-              <Link href="#" variant="body2">
-                {"Already have an account? Log in"}
-              </Link>
-            </Grid>
-          </Grid>
-        </form>
-      </div>
-    </Container>
+      <List>
+        {todoList.map((value, index) => {
+          return (
+            <ListItem
+              key={value.id}
+              button
+              onClick={toggleItem(value.id)}
+              className={
+                value.anim ? classes.slideLeftEffect : classes.slideUpEffect
+              }>
+              <ListItemIcon>
+                <Checkbox disableRipple edge="start" checked={value.checked} />
+              </ListItemIcon>
+              <ListItemText
+                primary={
+                  value.checked ? (
+                    <b>
+                      <strike>{value.text}</strike>
+                    </b>
+                  ) : (
+                    value.text
+                  )
+                }
+              />
+              <ListItemSecondaryAction>
+                <IconButton edge="end" onClick={deleteRequestItem(value.id)}>
+                  <DeleteIcon />
+                </IconButton>
+              </ListItemSecondaryAction>
+            </ListItem>
+          );
+        })}
+        <ListItem key={'input'} button disableRipple>
+          <TextField
+            fullWidth={true}
+            label="Add notes/to-do's"
+            inputRef={ref => (inRef = ref)}
+          />
+          <ListItemSecondaryAction>
+            <IconButton edge="end" onClick={addItem}>
+              <AddIcon />
+            </IconButton>
+          </ListItemSecondaryAction>
+        </ListItem>
+      </List>
+      <Grid container justify="center">
+              <div>
+     <Button variant="contained" color="primary" href="#contained-buttons">
+     Go to analytics screen
+   </Button>
+   </div>
+   </Grid>
+    </Fragment>
+  
   );
-}
+};
+
+export default TodoList;
