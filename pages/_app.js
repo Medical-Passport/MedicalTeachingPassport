@@ -1,7 +1,50 @@
-import '../styles/globals.css'
+import React, { Component } from "react";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+class App extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      items: [],
+      isLoaded: false,
+    }
+  }
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(res => res.json())
+      .then(json => {
+        this.setState({
+          isLoaded: true,
+          items: json,
+      })
+      });
+  }
+  render() {
+    var { isLoaded, items } = this.state;
+
+    if(!isLoaded){
+      return <div>Loading...</div>;
+    }
+
+    else {
+      
+    return (
+    <div className="App">
+      
+      <ul>
+        {items.map(item => (
+            <li key= {item.id}>
+              Name: {item.name} | Email: 
+            
+              <a href="mailto:{}" alt="Email address for Yali Amit">{item.email}</a>
+            </li>
+          ))}
+      </ul>
+
+
+    </div>
+    );
+    }
+  }
 }
-
-export default MyApp
+export default App;
