@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
+    backgroundColor: "white",
   },
   toolbar: {
     flexWrap: "wrap",
@@ -49,7 +50,10 @@ const useStyles = makeStyles((theme) => ({
       paddingBottom: theme.spacing(6),
     },
   },
-}));
+  colorTextPrimary: {
+    color: "#076585"
+  },
+}), { name: 'MuiNavbar' });
 
 function Navbar() {
   const classes = useStyles();
@@ -57,51 +61,51 @@ function Navbar() {
   return (
     <AppBar
       position="static"
-      color="white"
       elevation={0}
       className={classes.appBar}
     >
       <Toolbar className={classes.toolbar}>
-        <Grid container space={24} alightItems="center">
+        <Grid container space={24} alignItems="center">
           <Grid item>
             <Typography
               variant="h4"
-              color="#076585"
+              color="textPrimary"
               noWrap
               className={classes.toolbarTitle}
             >
-              <a href="/">PassportToClinicalTeaching
-</a>            </Typography>
+              <a href="/" className={classes.colorTextPrimary}>PassportToClinicalTeaching</a>
+            </Typography>
           </Grid>
 
           <Grid item xs container direction="row-reverse">
-            <Button
-              href="#"
-              color="primary"
-              variant="outlined"
-              className={classes.link}
-            >
-              Account
-            </Button>
-            <Grid item>
               <Button
-                variant="button"
-                color="textPrimary"
-                href="/about/faq"
-                className={classes.link}
-              >
-                About
+                  href="#"
+                  color="primary"
+                  variant="outlined"
+                  className={classes.link}
+                >
+                  Account
               </Button>
+            
+            <Grid item>
+                <Button
+                    color="secondary"
+                    href="/about/faq"
+                    className={classes.link}
+                  >
+                    About
+                </Button>
             </Grid>
+
             <Grid item>
-              <Button
-                variant="button"
-                color="textPrimary"
-                href="#"
-                className={classes.link}
-              >
-                Support
-              </Button>
+                <Button
+                    color="secondary"
+                    href="#"
+                    className={classes.link}
+                  >
+                    Support
+                </Button>
+              
             </Grid>
             <Grid item></Grid>
           </Grid>
