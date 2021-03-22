@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Login() {
+export default function Contact() {
    const classes = useStyles();
 
    const sName = useRef();
