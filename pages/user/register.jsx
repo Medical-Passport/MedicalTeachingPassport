@@ -110,7 +110,7 @@ export default function Login() {
               </Grid>
             </Grid>
             <br/>
-            <Grid container component="main" maxWidth="md">
+            <Grid container component="main">
               <Typography  component="h1" variant="h6">
                 Choose your section, institution, and cohort:
               </Typography>
@@ -134,13 +134,13 @@ export default function Login() {
               </Grid>
               <Grid item xs>
                 <FormControl className={classes.formControl}>
-                  <InputLabel shrink htmlFor="Section-native-label-placeholder">
+                  <InputLabel shrink htmlFor="Institution-native-label-placeholder">
                     Institution
                   </InputLabel>
                   <NativeSelect
                     inputProps={{
-                      name: "section",
-                      id: "section-native-label-placeholder",
+                      name: "institution",
+                      id: "institution-native-label-placeholder",
                     }}
                   >
                     <option value="">UChicago</option>
@@ -149,7 +149,7 @@ export default function Login() {
               </Grid>
               <Grid item xs>
                 <FormControl className={classes.formControl}>
-                  <InputLabel shrink htmlFor="Section-native-label-placeholder">
+                  <InputLabel shrink htmlFor="Cohort-native-label-placeholder">
                     Cohort
                   </InputLabel>
                   <NativeSelect
