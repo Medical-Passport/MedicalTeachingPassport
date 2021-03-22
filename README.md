@@ -25,10 +25,10 @@ yarn install
 As this project uses SendGrid to send emails, a SendGrid API key is required to enable email transactions. In order to set the API key, use the following file:
 
 #### For Windows:
-In **sendgrid.bat**, replace **SENDGRID_API_PLACEHOLDER** with your key, save, and run the batch file.
+In `sendgrid.bat`, replace `SENDGRID_API_PLACEHOLDER` with your key. Save and run the batch file.
 
 #### For MacOS or Linux:
-In **sendgrid.env**, replace **SENDGRID_API_PLACEHOLDER** with your key, save, and run the bash file.
+In `sendgrid.env`, replace `SENDGRID_API_PLACEHOLDER` with your key. Save and run the bash file.
 
 ### Starting the Developmental live server
 
