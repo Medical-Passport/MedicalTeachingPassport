@@ -1,4 +1,6 @@
 .next
 yarn.lock
 node_modules
+sendgrid.bat
+sendgrid.env
 package-lock.json
