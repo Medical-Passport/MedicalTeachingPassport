@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
   colorTextPrimary: {
     color: "#076585"
   },
-}), { name: 'MuiNavbar' });
+}));
 
 function Navbar() {
   const classes = useStyles();
