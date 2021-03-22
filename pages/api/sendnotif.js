@@ -15,7 +15,6 @@ export default (req, res) => {
       text: `FROM: "${body.name}" <${body.email}>\nTIME: ${new Date().toLocaleString()}\n${body.body}`,
       html: `<p>FROM: &quot;${body.name}&quot; &lt;${body.email}&gt;</p><p>TIME: ${new Date().toLocaleString()}</p><p>${body.body}</p>`
    }
-   console.log(mailContent)
 
    sgMail
       .send(mailContent)
