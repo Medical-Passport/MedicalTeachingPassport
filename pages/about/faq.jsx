@@ -40,7 +40,10 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     backgroundColor: red[500],
   },
-}));
+}), { name: 'MuiFAQ' });
+
+// TODO: Fix Card Header title and collapsable button alignment
+//       update support section
 
 export default function FAQ() {
   const classes = useStyles();
