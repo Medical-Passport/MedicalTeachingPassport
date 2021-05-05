@@ -1,209 +1,172 @@
+import {useRef} from 'react';
 import Head from "next/head";
 import styles from "../../styles/Home.module.css";
 import Copyright from "../../components/Copyright";
 import Navbar from "../../components/Navbar";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
 import { makeStyles } from "@material-ui/core/styles";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
+import Container from '@material-ui/core/Container';
+import Button from '@material-ui/core/Button';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import Divider from '@material-ui/core/Divider';
+import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles({
-  media: {
-    height: 300,
-  },
-});
+const useStyles = makeStyles((theme) => ({
+   paper: {
+      padding: theme.spacing(1),
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+      whiteSpace: 'nowrap',
+      marginBottom: theme.spacing(1),
+    },
+}));
 
-export default function Profile() {
-  const classes = useStyles();
+export default function Contact() {
+   const classes = useStyles();
 
-  return (
-    <div className={styles.containerContent}>
-      <Head>
-        <title>Teaching Passport</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+   const pCurrentPass = useRef();
+   const pNewPass = useRef();
+   const pNewPass2 = useRef();
 
-      <Navbar />
+   const sendTicket = () => {
+      fetch("/api/sendnotif", {
+         method: "POST",
+         body: JSON.stringify({
+            name: sName.current.value,
+            email: sEmail.current.value,
+            body: sBody.current.value,
+         })
+      }).then(res => {
+         // console.log("fetch Response!");
+      }).catch(err => {
+         // console.log("Oops!");
+      });
+   }
 
-      <main className={styles.mainContent}>
-        <Grid
-          container
-          direction="row"
-          justify="space-around"
-          alignItems="stretch"
-          spacing={2}
-        >
-          <Grid item xs={2} justify="center">
-            <Card className={classes.root}>
-              <CardActionArea>
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    Murphy, Elizbath
-                  </Typography>
-                  <CardMedia
-                    className={classes.media}
-                    image="profile.jpeg"
-                    title="Admin"
-                  />
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    UChicago Clinical Teaching Passport Supervisor
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <CardActions>
-                <Button
-                  href="#"
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  className={classes.submit}
-                >
-                    Contact
-                </Button>
-              </CardActions>
-            </Card>
-          </Grid>
+   // prefill email and name if the user is logged in (QoL optional feature)
+   // Note: stupid thing happens when using outlined variant and refreshing page
+   return (
+      <div className={styles.container}>
+         <Head>
+            <title>Teaching Passport</title>
+            <link rel="icon" href="/favicon.ico" />
+         </Head>
 
-          <Grid item xs={8} justify="center">
-            <Card className={classes.root} variant="outlined">
-              <CardContent>
-                <Typography variant="h4" gutterBottom>
-                  Clinical Teaching Domains
-                </Typography>
-                <Typography variant="h5" component="h2"></Typography>
-                <Typography className={classes.pos} color="textSecondary">
-                  Incomplete
-                </Typography>
+         <Navbar />
 
-                <br />
-
-                <Grid container direction="column">
-                  <Grid item xs>
-                    <Button href="/domains/biannualreview" variant="contained" color="secondary">
-                      Opt-in and Biannual Review
-                    </Button>
+         <main className={styles.main}>
+            <Container component="main" maxWidth="md">
+               <List>
+                  <Typography variant="h3">FirstName LastName</Typography>
+                  <Typography color="textSecondary" gutterBottom>name123@email.com</Typography>
+               </List>
+               <List>
+                  <Typography variant="h4">Additional Information</Typography>
+                  <Divider/>
+                  <ListItem disableGutters>
+                     <Grid container spacing={2}>
+                        <Grid item xs={12} sm={2}>
+                           <Typography>Section</Typography>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                           SectionName
+                        </Grid>
+                     </Grid>
+                  </ListItem>
+                  <ListItem disableGutters>
+                     <Grid container spacing={2}>
+                        <Grid item xs={12} sm={2}>
+                           <Typography>Institution</Typography>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                           <Typography>InstitutionName</Typography>
+                        </Grid>
+                     </Grid>
+                  </ListItem>
+                  <ListItem disableGutters>
+                     <Grid container spacing={2}>
+                        <Grid item xs={12} sm={2}>
+                           <Typography>Cohort</Typography>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                           CohortName
+                        </Grid>
+                     </Grid>
+                  </ListItem>
+               </List>
+               <List>
+                  <Typography variant="h4">Summary</Typography>
+                  <Divider/>
+                  <ListItem disableGutters>
+                     <Button
+                           type="submit"
+                           variant="outlined"
+                           color="primary"
+                           href="#"
+                        >
+                           View My Stats
+                        </Button>
+                  </ListItem>
+               </List>
+               <List>
+                  <Typography variant="h4">Change Password</Typography>
+                  <Divider />
+                  <ListItem disableGutters>
+                     <Grid container justify="space-between" spacing={2}>
+                        <Grid item xs={12} sm={6}>
+                           <TextField
+                              id="profile-current-pass"
+                              label="Current Password"
+                              type="password"
+                              fullWidth
+                              inputRef={pCurrentPass}
+                           />
+                        </Grid>
+                     </Grid>
+                  </ListItem>
+                  <ListItem disableGutters>
+                     <Grid container justify="space-between" spacing={2}>
+                        <Grid item xs={12} sm={6}>
+                           <TextField
+                              id="profile-new-pass"
+                              label="New Password"
+                              type="password"
+                              fullWidth
+                              inputRef={pNewPass}
+                           />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                           <TextField
+                              id="profile-new-pass-2"
+                              label="Re-enter New Password"
+                              type="password"
+                              fullWidth
+                              inputRef={pNewPass2}
+                           />
+                        </Grid>
+                     </Grid>
+                  </ListItem>
+               </List>
+               <Grid container justify="flex-end">
+                  <Grid item xs={2}>
+                     <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        onClick={sendTicket}
+                     >
+                        Save
+                     </Button>
                   </Grid>
-                  <br />
-                  <Grid item xs>
-                    <Button href="/domains/biannualreview" variant="contained" color="secondary">
-                      Active Medical Education Committee Membership
-                    </Button>
-                  </Grid>
-                  <br />
-                  <Grid item xs>
-                    <Button href="/domains/biannualreview" variant="contained" color="secondary">
-                      Faculty Development in Medical Education
-                    </Button>
-                  </Grid>
-                  <br />
-                  <Grid item xs>
-                    <Button href="/domains/biannualreview" variant="contained" color="secondary">
-                      Instructions in Internal Medicine Undergrad, Grad, or
-                      Interprofessional
-                    </Button>
-                  </Grid>
-                  <br />
-                  <Grid item xs>
-                    <Button href="/domains/biannualreview" variant="contained" color="secondary">
-                      Education Servier and Citizenship
-                    </Button>
-                  </Grid>
-                  <br />
-                  <Grid item xs>
-                    <Button href="/domains/biannualreview" variant="contained" color="secondary">
-                      Prepare and Present Teaching Topics
-                    </Button>
-                  </Grid>
-                  <br />
-                  <Grid item xs>
-                    <Button href="/domains/biannualreview" variant="contained" color="secondary">
-                      Introduction to MedEd Scholarship
-                    </Button>
-                  </Grid>
-                  <br />
-                  <Grid item xs>
-                    <Button href="/domains/biannualreview" variant="contained" color="secondary">
-                      Coaching Capstone Experience
-                    </Button>
-                  </Grid>
-                  <br />
-                  <Grid item xs>
-                    <Button href="/domains/biannualreview" variant="contained" color="primary">
-                      Extras
-                    </Button>
-                  </Grid>
-                  <br />
-                </Grid>
-              </CardContent>
-              <CardActions>
-                <Button
-                  href="#"
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  className={classes.submit}
-                >
-                    Submit
-                </Button>
-              </CardActions>
-            </Card>
-          </Grid>
-
-          <Grid item xs={2} justify="center">
-            <Card className={classes.root} variant="outlined">
-              <CardContent>
-                <Typography variant="h5" gutterBottom>
-                  Recent Notes
-                </Typography>
-                <Typography variant="h5" component="h2"></Typography>
-                <Typography className={classes.pos} color="textSecondary">
-                  Murphy, Elizabeth
-                </Typography>
-                <Typography variant="body2" component="p">
-                  Activity under Educational service was meant for another
-                  section - can you correct?
-                </Typography>
-                <br/>
-                <Typography className={classes.pos} color="textSecondary">
-                  Murphy, Elizabeth
-                </Typography>
-                <Typography variant="body2" component="p">
-                  Activity under Capstone is incomplete
-                  please correct!
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Button
-                  href="#"
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  className={classes.submit}
-                >
-                    Clear
-                </Button>
-              </CardActions>
-            </Card>
-          </Grid>
-        </Grid>
-      </main>
-
-      <footer className={styles.footer}>
-        <Copyright />
-      </footer>
-    </div>
-  );
+               </Grid>
+            </Container>
+         </main>
+         <footer className={styles.footer}>
+            <Copyright />
+         </footer>
+      </div>
+   );
 }
